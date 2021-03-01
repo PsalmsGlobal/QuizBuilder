@@ -3,6 +3,7 @@
 
 # Package files
 *.jar
+*.package-lock.json
 
 # Maven
 target/
@@ -35,6 +36,15 @@ Thumbs.db
 *.flv
 *.mov
 *.wmv
+
+#Frontend
+*node_modules
+  *bulma
+  *css
+  *sass
+  *bulma.sass
+      
+      
 
 .DS_Store
 .env*
