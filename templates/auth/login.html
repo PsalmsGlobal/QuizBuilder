@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container text-center mt-5 pt-5">
+<form class="form-signin" method="post">
+    {% csrf_token %}
+        {% if error %}
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <strong>{{ error }}</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+    {% endif %}
+    <h4 class="h4 mb-3 fw-normal">PLEASE LOGIN</h4>
+    <div class="text-center">
+      <input style="height: 40px;" type="email" name="email" id="inputEmail" class="col-sm-6 mt-3 row-2" placeholder="Email address" required autofocus>
+    </div>
+    <div class="text-center">
+      <input style="height: 40px;" type="password" name="password" id="inputPassword" class="col-sm-6  mt-3 row-2" placeholder="Password" required>
+    </div>
+    <p>Don't Have Account! <a href="{% url 'register_attempt' %}"><strong>Click Here To Register</strong></a></p>
+    <button class="btn btn-outline-primary" type="submit"><strong>Sign in</strong></button>
+    </div>
+    
+  </form>
+</div>
+
+
+{% endblock %}
