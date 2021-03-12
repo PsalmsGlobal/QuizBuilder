@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+
+    <title>Add Question</title>
+  </head>
+  <body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
+      <div class="container">
+        <a class="navbar-brand "><h3>Quiz App</h3></a>
+        <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse ms-5" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{% url 'teacher_home' %}">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="{% url 'teacher_question' %}">Add Question</a>
+              </li>
+            </ul>
+
+      
+
+
+            {% if not request.user.is_authenticated %}
+            {% else %}
+            
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav ms-auto mr-2 mb-lg-0">
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="true">
+                    Welcome, {{ user.first_name }} {{ user.last_name}}
+                  </a>
+                  <ul class="dropdown-menu bg-secondary" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item text-light" href="{% url 'features' %}">Profile Features</a></li>
+                    <li><a class="dropdown-item text-light" href="{% url 'about' %}">About</a></li>
+                    <li><a class="dropdown-item text-light" href="{% url 'logout' %}">Log Out</a></li>
+                  </ul>
+            {% endif %}
+          </ul>
+        </div>
+      </div>
+    </nav>
+      
+      </div>
+    </nav> 
+    {% load widget_tweaks %}
+    {% block content %}
+
+    <div class=" container justify-content-center">
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2">
+            <div class="card card-default">
+                <div class="card-header">
+                    <h3 class="card-title">Create A New Poll</h3>
+                </div>
+                    
+                <form method="POST">
+                    {% csrf_token %}
+    
+    
+
+                            <div class="col-lg-4">
+                                <input type="submit" class="btn btn-info" value="create"/>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+    
+            </div>
+        </div>
+    </div>
+  </div>
+    {% endblock %}
+  
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+
+
+  </body>
+</html>
+
+
+
+

@@ -1,0 +1,103 @@
+<style>
+    html,body { 
+  height: 100%; 
+  }
+  
+  .global-container{
+  height:100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #dfdbdb;
+  }
+  
+  form{
+  padding-top: 10px;
+  font-size: 14px;
+  margin-top: 30px;
+  }
+  
+  .card-title{ font-weight:300; }
+  
+  .btn{
+  font-size: 14px;
+  margin-top:20px;
+  text-align:center;
+  }
+  
+  
+  .login-form{ 
+  width:330px;
+  margin:20px;
+  background-color: #121312;
+  }
+  
+  .sign-up{
+  text-align:center;
+  padding:20px 0 0;
+  }
+  
+  .alert{
+  margin-bottom:-30px;
+  font-size: 13px;
+  margin-top:20px;
+  }
+  </style>
+  
+  {% extends 'base.html' %}
+  
+  {% block content %}
+  
+  
+  <div class="global-container">
+      <div class="card login-form">
+      <div class="card-body">
+          <h3 class="card-title text-center"><strong>Register</strong></h3>
+          <div class="card-text">
+              {% if messages %}
+              
+                      {% for message in messages %}
+                      <div class="alert alert-info">
+                          {{ message }}
+                      </div>
+                      {% endfor %}
+                
+                  {% endif %}
+  
+              <form method="post">
+                  {%  csrf_token %}
+    
+                  <div class="form-group mt-3">
+                      <input type="text" name="username" class="form-control form-control-sm" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Username">
+                  </div>
+                  <div class="form-group mt-3">
+                      <input type="text" name="f_name" class="form-control form-control-sm" id="exampleInputEmail1" aria-describedby="emailHelp"  placeholder="First Name">
+                  </div>
+                  <div class="form-group mt-3">
+                      <input type="text" name="l_name" class="form-control form-control-sm" id="exampleInputEmail1" aria-describedby="emailHelp"  placeholder="Last Name">
+                  </div>
+                  <div class="form-group mt-3">
+                      <input type="email" name="email" class="form-control form-control-sm" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email Address">
+                  </div>
+                  <div class="form-group mt-3">
+                      <input type="password" name="password" class="form-control form-control-sm" id="exampleInputPassword1"  placeholder="Password">
+                  </div>
+                  <div class="text-center mt-2">
+                  <a href="#" style="float:center;font-size:12px;">Forgot password?</a>
+                </div>
+                  <div class="text-center">
+                  <button type="submit" class="btn btn-outline-primary mt-2">Sign-Up</button>
+                </div>
+                  <div class="sign-up mt-2">
+                     Already have an account? <a href="{% url 'login_teacher'%}"><strong>Sign-In</strong></a>
+                  </div>
+              </form>
+          </div>
+      </div>
+  </div>
+  </div>
+  
+  
+  {% endblock %}
+  
+  

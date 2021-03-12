@@ -1,0 +1,94 @@
+<style>
+    html,body { 
+  height: 100%; 
+  }
+  
+  .global-container{
+  height:100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #dfdbdb;
+  }
+  
+  form{
+  padding-top: 10px;
+  font-size: 14px;
+  margin-top: 30px;
+  }
+  
+  .card-title{ font-weight:300; }
+  
+  .btn{
+  font-size: 14px;
+  margin-top:20px;
+  text-align:center;
+  }
+  
+  
+  .login-form{ 
+  width:330px;
+  margin:20px;
+  background-color: #121312;
+  }
+  
+  .sign-up{
+  text-align:center;
+  padding:20px 0 0;
+  }
+  
+  .alert{
+  margin-bottom:-30px;
+  font-size: 13px;
+  margin-top:20px;
+  }
+  </style>
+  
+  {% extends 'base.html' %}
+  
+  {% block content %}
+  
+  
+  <div class="global-container">
+      <div class="card login-form">
+      <div class="card-body">
+          <h3 class="card-title text-center"><strong>Log In</strong></h3>
+          {% if messages %}
+  
+          {% for message in messages %}
+          <div class="alert alert-info">
+              {{ message }}
+          </div>
+          {% endfor %}
+    
+      {% endif %}
+          <div class="card-text">
+              <!--
+              <div class="alert alert-danger alert-dismissible fade show" role="alert">Incorrect username or password.</div> -->
+              <form method="post" >
+                  {% csrf_token %}
+                  <!-- to error: add class "has-danger" -->
+                  <div class="form-group mt-4">
+                      <input type="text" name="username" class="form-control form-control-sm" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Username">
+                  </div>
+                  <div class="form-group mt-4">   
+                      <input type="password" name="password" class="form-control form-control-sm" id="exampleInputPassword1" placeholder="Password">
+                  </div>
+                  <div class="text-center">
+                  <a href="#" style="float:center;font-size:12px;" >Forgot password?</a>
+                  </div>
+                <div class="text-center">
+                  <button type="submit" class="btn btn-outline-primary">Sign in</button>
+                  <a href="{% url 'chooseUser' %}" class="btn btn-outline-primary" type="submit" >Back</a>
+                </div>
+                  <div class="sign-up text-center">
+                      Don't have an account? <a href="{% url 'register_teacher' %}">Sign-Up</a>
+                  </div>
+              </form>
+          </div>
+      </div>
+  </div>
+  </div>
+  
+  
+  {% endblock %}
